@@ -4,6 +4,8 @@ using UnityEngine;
 public class MouseDragController : MonoBehaviour
 {
     [SerializeField]
+    private GameController gameController;
+    [SerializeField]
     private AppleSpawner appleSpawner;
     [SerializeField]
     private RectTransform dragRectangle;
@@ -23,6 +25,11 @@ public class MouseDragController : MonoBehaviour
 
     private void Update()
     {
+        if (gameController.IsGameStart == false)
+        {
+            return;
+        }
+
         if (Input.GetMouseButtonDown(0)) 
         {
             start = Input.mousePosition;
